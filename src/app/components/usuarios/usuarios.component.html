@@ -1,0 +1,26 @@
+<div class="equiposContent">
+  <table>
+    <thead>
+      <tr>
+        <th>FULLNAME</th>
+        <th>USERNAME</th>
+        <th>EQUIPOS</th>
+        <th>OPCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usu of users">
+        <td>{{usu.fullName}}</td>
+        <td>{{usu.username}}</td>
+        <td>
+          <ul *ngIf="usu.teams">
+            <ng-template ngFor let-team [ngForOf]="usu.teams">
+              <li *ngIf="team">{{team.displayName}}</li>
+            </ng-template>
+          </ul>
+        </td>
+        <td><button class="delete"><i class="fa fa-trash"></i>Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

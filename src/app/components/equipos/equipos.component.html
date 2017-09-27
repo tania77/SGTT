@@ -1,0 +1,27 @@
+<div class="equiposContent">
+  <table>
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>MIEMBROS</th>
+        <th>OPCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of teams">
+        <td>{{team.displayName}}</td>
+        <td>
+          <ul *ngIf="team.memberships">
+            <ng-template ngFor let-membership [ngForOf]="team.memberships">
+              <li *ngIf="membership.user">{{membership.user.fullName}}</li>
+            </ng-template>
+          </ul>
+        </td>
+        <td><button class="delete" (click)="borrarEquipo(team)"><i class="fa fa-trash"></i>Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="create" (click)="crearEquipo = true"><i class="fa fa-plus"></i>Crear Equipo</button>
+  <app-crear-equipo *ngIf="crearEquipo"></app-crear-equipo>
+</div>
